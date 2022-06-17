@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(319deg, #9dd6f2 0%, #ffec82 37%, #ffcfd2 100%);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.3); 
+    border-radius: 20px;
+}
+
+.app-name {
+    font-family: 'Karla', normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 37px;
+    color: #293264;
+}
+
+.description {
+    font-family: 'Inter', normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 19px;
+    color: #293264;
+}
+
+.start-button {
+    margin-top: 40px;
+    width: 280px;
+    height: 80px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #4D5B9E;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.start-button:focus {
+    outline: none;
+}
+
+.start-button:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
