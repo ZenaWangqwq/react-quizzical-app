@@ -2,7 +2,7 @@ import { nanoid } from "nanoid"
 import React from "react"
 import Question from "./Question"
 
-export default function Quiz() {
+export default function Quiz(props) {
     const [questionData, setQuestionData] = React.useState([])
     const [isCheckAnswer, setIsCheckAnswer] = React.useState(false)
     const [correctNumber, setCorrectNumber] = React.useState(0)
@@ -26,7 +26,7 @@ export default function Quiz() {
                     isCheckAnswer: isCheckAnswer
                 }
             })))
-    }, [])
+    }, [props.isNewGame])
  
     const questionElements = questionData.map(element => {
         return <Question 
@@ -48,11 +48,16 @@ export default function Quiz() {
         }
     }
 
-    function handleClick() {
+    function handlecCheckButtonClick() {
         setQuestionData(prevData => prevData.map(data => {
             return {...data, isCheckAnswer: true}
         }))
         setIsCheckAnswer(true)
+    }
+
+    function handlePlayAgainButtonClick() {
+        setIsCheckAnswer(false)
+        props.toggleNewGame()
     }
 
     return (
@@ -63,9 +68,9 @@ export default function Quiz() {
                 {isCheckAnswer ?
                     <div className="result">
                         <h3>You scored {correctNumber}/5 correct answers</h3>
-                        <button className="play-again-button">Play Again</button>
+                        <button className="play-again-button" onClick={handlePlayAgainButtonClick}>Play Again</button>
                     </div> :
-                    <button className="check-button" onClick={handleClick}>check answers</button>
+                    <button className="check-button" onClick={handlecCheckButtonClick}>check answers</button>
                 }
             </footer>
         </div>
