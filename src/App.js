@@ -11,7 +11,7 @@ export default function App() {
 
     return (
         <main>
-            {isStart ? <Quiz startQuiz={startQuiz}/> : <Intro startQuiz={startQuiz}/>}
+            {isStart ? <Quiz /> : <Intro startQuiz={startQuiz}/>}
         </main>
     )
 }

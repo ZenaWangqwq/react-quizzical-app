@@ -27,9 +27,11 @@ main {
 .app-name {
     font-family: 'Karla', normal;
     font-weight: 700;
-    font-size: 50px;
+    font-size: 40px;
     line-height: 37px;
     color: #293264;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .description {
@@ -40,24 +42,37 @@ main {
     color: #293264;
 }
 
-.start-button {
+.start-button, .check-button {
     margin-top: 40px;
-    width: 280px;
-    height: 80px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #4D5B9E;
     border: none;
     border-radius: 15px;
     color: white;
-    font-size: 25px;
     cursor: pointer;
 }
 
-.start-button:focus {
+.start-button {
+    width: 250px;
+    height: 70px;
+    font-size: 25px;
+}
+
+.check-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    font-size: 15px;
+    
+}
+
+.start-button:focus, .check-button:focus{
     outline: none;
 }
 
-.start-button:active {
+.start-button:active, .check-button:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
@@ -67,10 +82,10 @@ main {
     gap: 10px;
 }
 
-.questions {
+.question {
     font-family: 'Karla', normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 20px;
     color: #293264;
 }
 
@@ -80,7 +95,6 @@ main {
 }
 
 .answer-button {
-    background-color: rgba(192, 205, 250, 0.3);
     border: 2px solid #293264;
     border-radius: 15px;
     cursor: pointer;
@@ -93,4 +107,9 @@ main {
 
 .question-group > hr {
     width: 100%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
 }
