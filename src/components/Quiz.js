@@ -11,19 +11,25 @@ export default function Quiz(props) {
             .then(data => setQuestionData(data.results))
     }, [props.startQuiz])
 
-    console.log(questionData)
+    function shuffleArray(array) {
+        return array.sort(() => Math.random() - 0.5);
+    }
 
-    const questionElements = questionData.map(element => 
-        <Question 
+    const questionElements = questionData.map(element => {
+        const answers = (element.incorrect_answers)
+        answers.push(element.correct_answer)
+        const uniqueAnswers = shuffleArray([...new Set(answers)])
+        return <Question 
             key={nanoid()}
             question={element.question}
-            incorrect_answers={element.incorrect_answers}
+            answers={uniqueAnswers}
             correct_answer={element.correct_answer}
             type={element.type}
             difficulty={element.difficulty}
             category={element.category}
         />
-    )
+    })
+
 
     return (
         <div>

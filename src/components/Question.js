@@ -2,20 +2,26 @@ import React from "react"
 
 export default function Question(props) {
 
-    const answers = (props.incorrect_answers)
-    answers.push(props.correct_answer)
-    const uniqueAnswers = [...new Set(answers)]
+    const [chooseAnswer, setChooseAnswer] = React.useState()
 
-    const answerButtons = uniqueAnswers.map(answer=>
-        <button className="answer-button" key={answer}>
+    const answerButtons = props.answers.map(answer => {
+        return <button
+            style = {
+                answer===chooseAnswer?
+                {backgroundColor: "rgba(0, 0, 255, 0.3)"} :
+                {backgroundColor: "rgba(255, 255, 255, 0.3)"}
+            }
+            className="answer-button" 
+            onClick={() => {setChooseAnswer(answer)}}
+            key={answer}>
             {answer}
         </button>
-    )
+    })
 
     return (
         <div className="question-group">
             <h1 className="questions">{props.question}</h1>
-            <div className="answers">
+            <div className="answer-group">
                 {answerButtons}
             </div>
             <hr />
