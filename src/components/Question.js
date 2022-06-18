@@ -5,12 +5,15 @@ export default function Question(props) {
     const [chooseAnswer, setChooseAnswer] = React.useState()
 
     function determineButtonStyles(answer){
-        const styles = {}
+        const styles = {
+            cursor: "not-allowed",
+            pointerEvents: "none"
+        }
         if (answer === chooseAnswer) {
             if (chooseAnswer === props.correct_answer){
-                styles.backgroundColor="green"
+                styles.backgroundColor="rgba(60, 179, 113, 0.7)"
             }else{
-                styles.backgroundColor="red"
+                styles.backgroundColor="rgba(255, 0, 0, 0.7)"
             }
         }else{
             styles.backgroundColor="rgba(255, 255, 255, 0.3)"
@@ -18,8 +21,10 @@ export default function Question(props) {
         return styles
     }
 
-    // console.log("question" + chooseAnswer)
-    console.log("question" + props.isCheckAnswer)
+    function handleClick(answer) {
+        setChooseAnswer(answer)
+        props.checkCorrectAnswer(answer===props.correct_answer)
+    }
 
     const answerButtons = props.answers.map(answer => {
         return <button
@@ -32,7 +37,7 @@ export default function Question(props) {
                         )
                     }
             className="answer-button" 
-            onClick={() => {setChooseAnswer(answer)}}
+            onClick={() => handleClick(answer)}
             key={answer}>
             {answer}
         </button>

@@ -42,7 +42,7 @@ main {
     color: #293264;
 }
 
-.start-button, .check-button {
+.start-button, .check-button, .play-again-button {
     margin-top: 40px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #4D5B9E;
@@ -58,7 +58,7 @@ main {
     font-size: 25px;
 }
 
-.check-button {
+.check-button, .play-again-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,4 +112,20 @@ main {
 footer {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.result > h3 {
+    font-family: 'Karla', normal;
+    font-weight: 700;
+    font-size: 15px;
+    color: #293264;
 }
