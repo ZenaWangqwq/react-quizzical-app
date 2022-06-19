@@ -48,7 +48,7 @@ main {
     color: #293264;
 }
 
-.start-button, .check-button, .play-again-button {
+.start-button, .check-button, .play-again-button, .back-button {
     margin-top: 40px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #4D5B9E;
@@ -64,7 +64,7 @@ main {
     font-size: 25px;
 }
 
-.check-button, .play-again-button {
+.check-button, .play-again-button, .back-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,6 +119,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
 .result {

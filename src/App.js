@@ -6,8 +6,8 @@ export default function App() {
     const [isStart, setIsStart] = React.useState(false)
     const [isNewGame, setIsNewGame] = React.useState(0)
     
-    function startQuiz() {
-        setIsStart(true)
+    function toggleQuiz() {
+        setIsStart(prevState => !prevState)
     }
 
     function toggleNewGame() {
@@ -18,8 +18,8 @@ export default function App() {
         <main>
             {
                 isStart ? 
-                <Quiz isNewGame={isNewGame} toggleNewGame={toggleNewGame}/> : 
-                <Intro startQuiz={startQuiz}/>
+                <Quiz isNewGame={isNewGame} toggleNewGame={toggleNewGame} toggleQuiz={toggleQuiz}/> : 
+                <Intro toggleQuiz={toggleQuiz}/>
             }
         </main>
     )

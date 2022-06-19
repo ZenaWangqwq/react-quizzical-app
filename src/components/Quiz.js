@@ -23,7 +23,7 @@ export default function Quiz(props) {
                         ...result,
                         id: nanoid(),
                         answers: uniqueAnswers,
-                        isCheckAnswer: isCheckAnswer
+                        isCheckAnswer: false
                     }
                 }))
             .then(data => setQuestionData(data))
@@ -62,6 +62,10 @@ export default function Quiz(props) {
         props.toggleNewGame()
     }
 
+    function handleBackButtonClick() {
+        props.toggleQuiz()
+    }
+
     return (
         <div className="quiz">
             <header className="app-name">Quizzical</header>
@@ -74,6 +78,7 @@ export default function Quiz(props) {
                     </div> :
                     <button className="check-button" onClick={handleCheckButtonClick}>check answers</button>
                 }
+                <button className="back-button" onClick={handleBackButtonClick} >Back</button>
             </footer>
         </div>
     )
