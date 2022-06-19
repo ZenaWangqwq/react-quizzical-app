@@ -28,13 +28,23 @@ export default function Quiz(props) {
                 }))
             .then(data => setQuestionData(data))
     }, [props.isNewGame])
+
+    function changePunctuation(str) {
+        return str
+                    .replace(/&lt;/g, "<")
+                    .replace(/&gt;/g, ">")
+                    .replace(/&quot;/g, '"')
+                    .replace(/&#039;/g, "'")
+                    .replace(/&amp;/g, "&");
+    }
  
     const questionElements = questionData.map(element => {
+
         return <Question 
             key={element.id}
-            question={element.question}
-            answers={element.answers}
-            correct_answer={element.correct_answer}
+            question={changePunctuation(element.question)}
+            answers={element.answers.map(answer => changePunctuation(answer))}
+            correct_answer={changePunctuation(element.correct_answer)}
             type={element.type}
             difficulty={element.difficulty}
             category={element.category}
