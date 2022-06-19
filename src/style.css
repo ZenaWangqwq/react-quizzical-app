@@ -14,14 +14,20 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    padding: 60px;
-    background-color: rgba(255, 255, 255, 0.3); 
-    border-radius: 20px;
 }
 
 .intro-page{
     align-items: center;
     text-align: center;
+    padding: 60px;
+    background-color: rgba(255, 255, 255, 0.3); 
+    border-radius: 20px;
+}
+
+.quiz {
+    background-color: rgba(255, 255, 255, 0.3); 
+    border-radius: 20px;
+    padding: 60px;
 }
 
 .app-name {

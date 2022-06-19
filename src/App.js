@@ -4,15 +4,14 @@ import Quiz from "./components/Quiz"
 
 export default function App() {
     const [isStart, setIsStart] = React.useState(false)
-    const [isNewGame, setIsNewGame] = React.useState(false)
+    const [isNewGame, setIsNewGame] = React.useState(0)
     
     function startQuiz() {
         setIsStart(true)
-        setIsNewGame(true)
     }
 
     function toggleNewGame() {
-        setIsNewGame(prevState => !prevState)
+        setIsNewGame(prevState => prevState + 1)
     }
 
     return (

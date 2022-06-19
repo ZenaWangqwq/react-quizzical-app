@@ -7,7 +7,7 @@ export default function Quiz(props) {
     const [isCheckAnswer, setIsCheckAnswer] = React.useState(false)
     const [correctNumber, setCorrectNumber] = React.useState(0)
 
-    React.useEffect(() =>{
+    React.useEffect(() => {
 
         function shuffleArray(array) {
             return array.sort(() => Math.random() - 0.5);
@@ -15,17 +15,18 @@ export default function Quiz(props) {
 
         fetch(`https://opentdb.com/api.php?amount=5`)
             .then(res => res.json())
-            .then(data => setQuestionData(data.results.map(data => {
-                const answers = (data.incorrect_answers)
-                answers.push(data.correct_answer)
-                const uniqueAnswers = shuffleArray([...new Set(answers)])
-                return {
-                    ...data,
-                    id: nanoid(),
-                    answers: uniqueAnswers,
-                    isCheckAnswer: isCheckAnswer
-                }
-            })))
+            .then(data => data.results.map(result => {
+                    const answers = (result.incorrect_answers)
+                    answers.push(result.correct_answer)
+                    const uniqueAnswers = shuffleArray([...new Set(answers)])
+                    return {
+                        ...result,
+                        id: nanoid(),
+                        answers: uniqueAnswers,
+                        isCheckAnswer: isCheckAnswer
+                    }
+                }))
+            .then(data => setQuestionData(data))
     }, [props.isNewGame])
  
     const questionElements = questionData.map(element => {
@@ -44,11 +45,11 @@ export default function Quiz(props) {
 
     function checkCorrectAnswer(isCorrectAnswer) {
         if(isCorrectAnswer){
-            setCorrectNumber(preScore => preScore+1)
+            setCorrectNumber(preScore => preScore + 1)
         }
     }
 
-    function handlecCheckButtonClick() {
+    function handleCheckButtonClick() {
         setQuestionData(prevData => prevData.map(data => {
             return {...data, isCheckAnswer: true}
         }))
@@ -56,6 +57,7 @@ export default function Quiz(props) {
     }
 
     function handlePlayAgainButtonClick() {
+        setCorrectNumber(0)
         setIsCheckAnswer(false)
         props.toggleNewGame()
     }
@@ -67,10 +69,10 @@ export default function Quiz(props) {
             <footer>
                 {isCheckAnswer ?
                     <div className="result">
-                        <h3>You scored {correctNumber}/5 correct answers</h3>
+                        <h3>You scored <font color="green" size="4">{correctNumber}/5</font> correct answers</h3>
                         <button className="play-again-button" onClick={handlePlayAgainButtonClick}>Play Again</button>
                     </div> :
-                    <button className="check-button" onClick={handlecCheckButtonClick}>check answers</button>
+                    <button className="check-button" onClick={handleCheckButtonClick}>check answers</button>
                 }
             </footer>
         </div>
