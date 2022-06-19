@@ -10,12 +10,17 @@ export default function Question(props) {
             pointerEvents: "none"
         }
         if (answer === chooseAnswer) {
-            if (chooseAnswer === props.correct_answer){
-                styles.backgroundColor="rgba(60, 179, 113, 0.7)"
-            }else{
+            if (chooseAnswer !== props.correct_answer){
                 styles.backgroundColor="rgba(255, 0, 0, 0.7)"
             }
-        }else{
+            else{
+                styles.backgroundColor="rgba(60, 179, 113, 0.7)"
+            }
+        }
+        else if(answer === props.correct_answer){
+            styles.backgroundColor="rgba(60, 179, 113, 0.7)"
+        }
+        else{
             styles.backgroundColor="rgba(255, 255, 255, 0.3)"
         }
         return styles
