@@ -7,6 +7,14 @@ export default function App() {
     const [isStart, setIsStart] = React.useState(false)
     const [isNewGame, setIsNewGame] = React.useState(0)
     const [isCustomize, setIsCustomize] = React.useState(false)
+    const [formData, setFormData] = React.useState(
+        {
+            number: 5,
+            category: "",
+            difficulty: "",
+            type: ""
+        }
+    )
     
     function toggleQuiz() {
         setIsStart(prevState => !prevState)
@@ -24,9 +32,9 @@ export default function App() {
         <main>
             {
                 isStart ? 
-                <Quiz isNewGame={isNewGame} toggleNewGame={toggleNewGame} toggleQuiz={toggleQuiz}/> : 
+                <Quiz isNewGame={isNewGame} toggleNewGame={toggleNewGame} toggleQuiz={toggleQuiz} formData={formData}/> : 
                 isCustomize ? 
-                <Customize toggleCustomize={toggleCustomize}/>: 
+                <Customize toggleCustomize={toggleCustomize} setFormData={setFormData} formData={formData}/>: 
                 <Intro toggleQuiz={toggleQuiz} toggleCustomize={toggleCustomize}/>
             }
         </main>

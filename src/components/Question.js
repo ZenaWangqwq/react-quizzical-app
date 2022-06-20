@@ -49,7 +49,7 @@ export default function Question(props) {
     })
 
     return (
-        <div className="question-group">
+        <div className="question-element">
             <h1 className="question">{props.question}</h1>
             <div className="answer-group">
                 {answerButtons}

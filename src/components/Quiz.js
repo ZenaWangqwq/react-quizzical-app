@@ -13,9 +13,10 @@ export default function Quiz(props) {
             return array.sort(() => Math.random() - 0.5);
         }
 
-        fetch(`https://opentdb.com/api.php?amount=5`)
+        fetch(`https://opentdb.com/api.php?amount=${props.formData.number}&category=${props.formData.category}&difficulty=${props.formData.difficulty}&type=${props.formData.type}`)
             .then(res => res.json())
             .then(data => data.results.map(result => {
+                    console.log(data)
                     const answers = (result.incorrect_answers)
                     answers.push(result.correct_answer)
                     const uniqueAnswers = shuffleArray([...new Set(answers)])
@@ -27,7 +28,7 @@ export default function Quiz(props) {
                     }
                 }))
             .then(data => setQuestionData(data))
-    }, [props.isNewGame])
+    }, [props.isNewGame, props.formData])
 
     function changePunctuation(str) {
         return str
@@ -75,11 +76,11 @@ export default function Quiz(props) {
     return (
         <div className="quiz">
             <header className="app-name">Quizzical</header>
-            {questionElements}
+            <div className="question-group">{questionElements}</div>
             <footer>
                 {isCheckAnswer ?
                     <div className="result">
-                        <h3>You scored <font color="green" size="4">{correctNumber}/5</font> correct answers</h3>
+                        <h3>You scored <font color="green" size="4">{correctNumber}/{props.formData.number}</font> correct answers</h3>
                         <button className="play-again-button" onClick={handlePlayAgainButtonClick}>Play Again</button>
                     </div> :
                     <button className="check-button" onClick={handleCheckButtonClick}>check answers</button>
