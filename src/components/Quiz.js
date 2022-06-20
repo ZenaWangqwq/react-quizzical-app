@@ -16,7 +16,6 @@ export default function Quiz(props) {
         fetch(`https://opentdb.com/api.php?amount=${props.formData.number}&category=${props.formData.category}&difficulty=${props.formData.difficulty}&type=${props.formData.type}`)
             .then(res => res.json())
             .then(data => data.results.map(result => {
-                    console.log(data)
                     const answers = (result.incorrect_answers)
                     answers.push(result.correct_answer)
                     const uniqueAnswers = shuffleArray([...new Set(answers)])
@@ -28,7 +27,7 @@ export default function Quiz(props) {
                     }
                 }))
             .then(data => setQuestionData(data))
-    }, [props.isNewGame, props.formData])
+    }, [props.isNewGame])
 
     function changePunctuation(str) {
         return str
@@ -81,11 +80,11 @@ export default function Quiz(props) {
                 {isCheckAnswer ?
                     <div className="result">
                         <h3>You scored <font color="green" size="4">{correctNumber}/{props.formData.number}</font> correct answers</h3>
-                        <button className="play-again-button" onClick={handlePlayAgainButtonClick}>Play Again</button>
+                        <button className="button play-again-button" onClick={handlePlayAgainButtonClick}>Play Again</button>
                     </div> :
-                    <button className="check-button" onClick={handleCheckButtonClick}>check answers</button>
+                    <button className="button check-button" onClick={handleCheckButtonClick}>check answers</button>
                 }
-                <button className="back-button" onClick={props.toggleQuiz} >Back</button>
+                <button className="button back-button" onClick={props.toggleQuiz} >Back</button>
             </footer>
         </div>
     )

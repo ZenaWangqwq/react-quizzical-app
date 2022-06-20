@@ -26,6 +26,7 @@ main {
 
 .quiz {
     height: 800px;
+    width: 1200px;
     background-color: rgba(255, 255, 255, 0.3); 
     border-radius: 20px;
     padding: 60px;
@@ -57,7 +58,7 @@ main {
     cursor: pointer;
 }
 
-.start-button, .check-button, .play-again-button, .back-button, .set-button {
+.button {
     margin-top: 40px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #4D5B9E;
@@ -83,12 +84,17 @@ main {
     
 }
 
-.start-button:focus, .check-button:focus{
+.button:focus{
     outline: none;
 }
 
-.start-button:active, .check-button:active {
+.button:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 12px 25px -5px #682ab9b0;
 }
 
 .question-group {

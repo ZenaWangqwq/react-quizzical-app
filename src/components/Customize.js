@@ -13,6 +13,7 @@ export default function Customize(props) {
 
     function handleSubmit(event) {
         event.preventDefault()
+        alert("Customize Successfully!")
         props.toggleCustomize()
     }
 
@@ -89,7 +90,7 @@ export default function Customize(props) {
                     <option value="multiple">Multiple Question</option>
                     <option value="boolean">True/False</option>
                 </select><br />
-                <button className="set-button">Set</button>
+                <button className="button set-button">Set</button>
             </form>
         </div>
     )
